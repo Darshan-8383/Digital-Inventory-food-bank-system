@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Inventory</title>
+</head>
+<body>
+
+<h2>Register</h2>
+<input id="regEmail" placeholder="Email">
+<input id="regPass" placeholder="Password" type="password">
+<button onclick="register()">Register</button>
+
+<h2>Login</h2>
+<input id="loginEmail" placeholder="Email">
+<input id="loginPass" placeholder="Password" type="password">
+<button onclick="login()">Login</button>
+
+<script>
+const API = "";
+
+function register() {
+    fetch(API + "/api/auth/register", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            email: document.getElementById("regEmail").value,
+            password: document.getElementById("regPass").value
+        })
+    }).then(res => res.json()).then(alert);
+}
+
+function login() {
+    fetch(API + "/api/auth/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+            email: document.getElementById("loginEmail").value,
+            password: document.getElementById("loginPass").value
+        })
+    }).then(res => res.json()).then(alert);
+}
+</script>
+
+</body>
+</html>
